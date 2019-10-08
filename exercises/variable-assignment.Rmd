@@ -1,0 +1,66 @@
+```{r, echo = FALSE, results = "hide"}
+## DATA GENERATION
+y <- 5
+x <- 3 * y
+y <- 2 * y + 3
+## Still under development
+possible <- c(
+    y - 2,
+    y - 4,
+    x,
+    y,
+    16
+)
+    
+
+correct <- 1
+solutions <- c(rep(FALSE, 4), TRUE)
+o <- c(sample((1:length(possible))[-correct], 4), correct)
+
+    
+## permute order of solutions/questions
+shuffle <- sample(1:5)
+questions <- possible[o][shuffle]
+solutions <- solutions[shuffle]
+```
+
+Question
+========
+
+
+Below is some `R` code. What is the output at the end of running the code?
+
+```{r , echo = TRUE, results = "hide"}
+y <- 5
+x <- 3 * y
+y <- 2 * y + 3
+y - 2
+```
+
+Which of the following statements are correct?
+
+```{r, echo = FALSE, results = "asis"}
+answerlist(questions)
+```
+
+
+Solution
+========
+
+The answer is `r c("(a)", "(b)", "(c)", "(d)", "(e)")[which(solutions)]`. The final line is $y - 2$ so we need to find the value of $y$ at the end of the code. We initially assign $y$ the value of $5$. Next, we assign $x$ the value $15 = 3 * 5$. Next, we assign $y$ the value $2 * {\color{red}y} + 3 = 2 * {\color{red}5} + 3 = 13$ because the previous value of $y$ was 5. Finally, we print out the value $y - 2 = 11$.
+
+
+<!-- ```{r, echo = FALSE, results = "asis"} -->
+<!-- answerlist(solutions) -->
+<!-- ``` -->
+
+
+
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(solutions, single = TRUE)`
+exname: variable-assignment
+
+

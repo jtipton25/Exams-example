@@ -1,0 +1,91 @@
+```{r data generation, echo = FALSE, results = "hide"}
+n <- rpois(1, 22)
+mu    <- rpois(1, 150)
+sigma <- as.integer(runif(1, 5, 15))
+
+x         <- round(mean(rnorm(n, mu, sigma)), digits = 2)
+qtiles    <- c(0.75, 0.80, 0.90, 0.95, 0.99)
+qtile_idx <- sample(1:length(qtiles), 1)
+qtile     <- qtiles[qtile_idx]
+not_qtile <- sample(qtiles[-qtile_idx], 1)
+solution  <- round(qnorm(qtile, mu, sigma / sqrt(n)), digits = 3)
+```
+
+
+
+
+Question
+========
+
+`r n` University of Arkansas pre-law students are taking the LSAT exam (the standardized exam for entry into law school) where the average LSAT score in the United States is `r mu` with a standard devation of `r sigma`. To be a top-ranked institution, the average student score must be in the in the top `r fmt(qtile * 100, digits = 0)`\% of classes. What average score is needed for the University to be a top ranked school?
+
+
+Below is `R` code for the problem that can be used to solve the problem.
+
+\btwocol
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qnorm}\NormalTok{(`r not_qtile`, 0, 1)}
+\end{Highlighting}
+\end{Shaded}
+
+
+```{r, eval=TRUE, echo=FALSE}
+cat(fmt(round(qnorm(not_qtile, 0, 1), digits = 3), digits = 3))
+```
+
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pnorm}\NormalTok{(`r mu`, `r qtile * 100`, `r sigma`)}
+\end{Highlighting}
+\end{Shaded}
+
+
+```{r, eval=TRUE, echo=FALSE}
+cat(fmt(round(pnorm(mu, qtile * 100, sigma), digits = 3), digits = 3))
+```
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qnorm}\NormalTok{(`r qtile`, 0, 1)}
+\end{Highlighting}
+\end{Shaded}
+
+
+```{r, eval=TRUE, echo=FALSE}
+cat(fmt(round(qnorm(qtile, 0, 1), digits = 3), digits = 3))
+```
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pnorm}\NormalTok{(`r qtile * 100`, `r mu`, `r sigma`)}
+\end{Highlighting}
+\end{Shaded}
+
+
+```{r, eval=TRUE, echo=FALSE}
+cat(fmt(round(pnorm(qtile * 100, mu, sigma), digits = 3), digits = 3))
+```
+
+
+\etwocol
+
+\vspace*{2cm}
+
+
+Solution
+========
+
+The Z-score for the average students' scores are $Z =$ `qnorm(``r qtile``)` $= `r round(qnorm(qtile), digits = 3)`$. From the Z-score, we can calculate the LSAT score needed by solving $Z = \frac{\bar{x} - \mu}{\frac{\sigma}{\sqrt{n}}}$ for $\bar{x}$ getting $\bar{x} = Z * \frac{\sigma}{\sqrt{n}} + \mu = `r round(qnorm(qtile), digits = 3)` * `r sigma` / `r round(sqrt(n), digits = 3)` + `r mu` = `r solution`$.
+
+
+
+
+Meta-information
+================
+extype: num
+exsolution: `r solution`
+exname: clt-quantile3
+tol: 0.05

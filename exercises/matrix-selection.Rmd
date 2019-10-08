@@ -1,0 +1,78 @@
+```{r, echo = FALSE, results = "hide"}
+## DATA GENERATION
+n <- 5#sample(4:6, 1)
+d <- 3#sample(2:4, 1)
+y <- matrix(sample(1:10, n * d, replace = TRUE), n, d)
+
+## check if any rows are duplicates
+while(any(duplicated(y))) {
+    y <- matrix(sample(1:10, n * d, replace = TRUE), n, d)
+}
+## Still under development
+possible <- list(
+    y[1, ],
+    y[2, ],
+    y[3, ],
+    y[4, ],
+    y[, 1],
+    y[, 2]
+)
+    
+
+correct <- 2
+solutions <- c(rep(FALSE, 4), TRUE)
+o <- c(sample((1:length(possible))[-correct], 4), correct)
+
+    
+## permute order of solutions/questions
+shuffle <- sample(1:5)
+questions <- possible[o][shuffle]
+solutions <- solutions[shuffle]
+```
+
+Question
+========
+
+
+Below is some `R` code. The matrix $y$ is displayed below.
+
+```{r}
+y
+```
+
+What is the output at the end of running the code?
+
+```{r , echo = TRUE, results = "hide"}
+y[2, ]
+```
+
+Which of the following statements are correct?
+
+```{r, echo = FALSE, results = "asis"}
+answerlist(questions)
+```
+
+
+Solution
+========
+
+The answer is `r c("(a)", "(b)", "(c)", "(d)", "(e)")[which(solutions)]` because the output is the 2nd row of the matrix $y = \begin{pmatrix} `r y[1, ]` \\ \hlight{`r y[2, ]`} \\ `r y[3, ]`\\ `r y[4, ]` \\ `r y[5]` \\ \end{pmatrix}$ is $\begin{pmatrix} `r y[2, ]` \end{pmatrix}$.
+
+\vspace{3cm}
+
+
+
+<!-- ```{r, echo = FALSE, results = "asis"} -->
+<!-- answerlist(solutions) -->
+<!-- ``` -->
+
+
+
+
+Meta-information
+================
+extype: schoice
+exsolution: `r mchoice2string(solutions, single = TRUE)`
+exname: matrix-subset
+
+

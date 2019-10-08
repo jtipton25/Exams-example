@@ -1,0 +1,36 @@
+```{r, echo = FALSE, results = "hide"}
+## possible answers
+possible <- c("Hawksbill Crag", "Whitaker Point", "Flat-top Mountain",
+              "Lazy River", "Blue Mountain")
+
+solutions <- c(TRUE, TRUE, rep(FALSE, length(possible) - 2))
+## permute order of solutions/questions
+o <- sample(1:length(possible), 5)
+while (sum(solutions[o]) == 0) {
+    ## make sure there is at least one correct answer
+    o <- sample(1:length(possible), 5)    
+}
+
+questions <- possible[o]
+solutions <- solutions[o]
+```
+
+Question
+========
+Which of these are places in Arkansas?
+```{r, echo = FALSE, results = "asis"}
+answerlist(questions)
+```
+
+Solution
+========
+The answer is `r c("(a)", "(b)", "(c)", "(d)", "(e)")[which(solutions)]`. 
+Whitaker Point and Hawksbill Crag are both the same place and the only 
+places in Arkansas.
+
+Meta-information
+================
+extype: mchoice
+exsolution: `r mchoice2string(solutions)`
+exname: choice
+
