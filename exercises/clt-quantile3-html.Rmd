@@ -21,57 +21,61 @@ Question
 
 Below is `R` code for the problem that can be used to solve the problem.
 
-<!-- The code below works well for pdf formats -->
+<style>
+  .col2 {
+    columns: 2 200px;         /* number of columns and width in pixels*/
+    -webkit-columns: 2 200px; /* chrome, safari */
+    -moz-columns: 2 200px;    /* firefox */
+  }
+  .col3 {
+    columns: 3 100px;
+    -webkit-columns: 3 100px;
+    -moz-columns: 3 100px;
+  }
+</style>
 
-\btwocol
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{qnorm}\NormalTok{(`r not_qtile`, 0, 1)}
-\end{Highlighting}
-\end{Shaded}
+<!-- The code below works well for html formats -->
 
+<div class="col2">
+
+
+<pre><code>
+qnorm(`r not_qtile`, 0, 1)
+</code></pre>
 
 ```{r, eval=TRUE, echo=FALSE}
 cat(fmt(round(qnorm(not_qtile, 0, 1), digits = 3), digits = 3))
 ```
 
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{pnorm}\NormalTok{(`r mu`, `r qtile * 100`, `r sigma`)}
-\end{Highlighting}
-\end{Shaded}
+<pre><code>
+qnorm(`r mu`, `r not_qtile * 100`, `r sigma`)
+</code></pre>
 
 
 ```{r, eval=TRUE, echo=FALSE}
 cat(fmt(round(pnorm(mu, qtile * 100, sigma), digits = 3), digits = 3))
 ```
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{qnorm}\NormalTok{(`r qtile`, 0, 1)}
-\end{Highlighting}
-\end{Shaded}
+<pre><code>
+qnorm(`r qtile`, 0, 1)
+</code></pre>
 
 
 ```{r, eval=TRUE, echo=FALSE}
 cat(fmt(round(qnorm(qtile, 0, 1), digits = 3), digits = 3))
 ```
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{pnorm}\NormalTok{(`r qtile * 100`, `r mu`, `r sigma`)}
-\end{Highlighting}
-\end{Shaded}
-
+<pre><code>
+qnorm(`r qtile * 100`, `r mu`, `r sigma`)
+</code></pre>
 
 ```{r, eval=TRUE, echo=FALSE}
 cat(fmt(round(pnorm(qtile * 100, mu, sigma), digits = 3), digits = 3))
 ```
 
-
-\etwocol
+</div>
 
 
 Solution

@@ -31,7 +31,7 @@ Question
 Which of the following `R` functions allows you a quick, overview of the data? Make sure you select all that apply.
 
 ```{r, echo = FALSE, results = "asis"}
-answerlist(questions)
+answerlist(questions, markup = "markdown")
 ```
 
 

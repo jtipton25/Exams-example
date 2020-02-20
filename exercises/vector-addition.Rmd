@@ -47,7 +47,7 @@ x + y
 
 
 ```{r, echo = FALSE, results = "asis"}
-answerlist(questions)
+answerlist(questions, markup = "markdown")
 ```
 
 

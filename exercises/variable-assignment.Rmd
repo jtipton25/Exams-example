@@ -40,7 +40,7 @@ y - 2
 Which of the following statements are correct?
 
 ```{r, echo = FALSE, results = "asis"}
-answerlist(questions)
+answerlist(questions, markup = "markdown")
 ```
 
 

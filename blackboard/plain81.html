@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+<title>Exam 1</title>
+<style type="text/css">
+body{font-family: Arial, Helvetica, Sans;}
+</style>
+<meta charset="utf-8">
+</head>
+
+<body>
+<h2>Exam 1</h2>
+
+<ol>
+<li>
+<h4>Question</h4>
+<p>Which of these are places in Arkansas?</p>
+<br/>
+<ol type="a">
+<li>
+Flat-top Mountain
+</li>
+<li>
+Hawksbill Crag
+</li>
+<li>
+Whitaker Point
+</li>
+<li>
+Lazy River
+</li>
+<li>
+Blue Mountain
+</li>
+</ol>
+<br/>
+<h4>Solution</h4>
+<p>The answer is (b), (c). Whitaker Point and Hawksbill Crag are both the same place and the only places in Arkansas.</p>
+<br/>
+</li>
+<li>
+<h4>Question</h4>
+<p>Which of the following <code>R</code> functions allows you a quick, overview of the data? Make sure you select all that apply.</p>
+<br/>
+<ol type="a">
+<li>
+modify()
+</li>
+<li>
+str()
+</li>
+<li>
+summary()
+</li>
+<li>
+c()
+</li>
+<li>
+simulate()
+</li>
+</ol>
+<br/>
+<h4>Solution</h4>
+<p>The answer is (b). The functions <code>glimpse()</code>, <code>str()</code> and <code>summary()</code> print out quick overviews of the data giving the number of varaibles, type of variables, and other quick previews of the data. The function <code>print()</code> gives an overview of the data, however the output is not summarized or does <code>print()</code> return a quick overview. The functions <code>lm()</code>, <code>c()</code>, <code>modify()</code>, and <code>simulate()</code> do not display the data at all .</p>
+<br/>
+</li>
+<li>
+<h4>Question</h4>
+<p>25 University of Arkansas pre-law students are taking the LSAT exam (the standardized exam for entry into law school) where the average LSAT score in the United States is 173 with a standard devation of 13. To be a top-ranked institution, the average student score must be in the in the top 80% of classes. What average score is needed for the University to be a top ranked school?</p>
+<p>Below is <code>R</code> code for the problem that can be used to solve the problem.</p>
+<style>
+  .col2 {
+    columns: 2 200px;         /* number of columns and width in pixels*/
+    -webkit-columns: 2 200px; /* chrome, safari */
+    -moz-columns: 2 200px;    /* firefox */
+  }
+  .col3 {
+    columns: 3 100px;
+    -webkit-columns: 3 100px;
+    -moz-columns: 3 100px;
+  }
+</style>
+<!-- The code below works well for html formats -->
+<div class="col2">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">qnorm</span>(<span class="fl">0.99</span>, <span class="dv">0</span>, <span class="dv">1</span>)</a></code></pre></div>
+<pre><code>## 2.326</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">qnorm</span>(<span class="dv">173</span>, <span class="dv">99</span>, <span class="dv">13</span>)</a></code></pre></div>
+<pre><code>## 1.000</code></pre>
+<pre><code>
+qnorm(0.8, 0, 1)
+</code></pre>
+<pre><code>## 0.842</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">qnorm</span>(<span class="dv">80</span>, <span class="dv">173</span>, <span class="dv">13</span>)</a></code></pre></div>
+<pre><code>## 0.000</code></pre>
+</div>
+<br/>
+<h4>Solution</h4>
+<p>The Z-score for the average students’ scores are <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">Z =</annotation></semantics></math> <code>qnorm(</code>0.8<code>)</code> <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo><mn>0.842</mn></mrow><annotation encoding="application/x-tex">= 0.842</annotation></semantics></math>. From the Z-score, we can calculate the LSAT score needed by solving <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Z</mi><mo>=</mo><mfrac><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>−</mo><mi>μ</mi></mrow><mfrac><mi>σ</mi><msqrt><mi>n</mi></msqrt></mfrac></mfrac></mrow><annotation encoding="application/x-tex">Z = \frac{\bar{x} - \mu}{\frac{\sigma}{\sqrt{n}}}</annotation></semantics></math> for <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mover><mi>x</mi><mo accent="true">‾</mo></mover><annotation encoding="application/x-tex">\bar{x}</annotation></semantics></math> getting <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>x</mi><mo accent="true">‾</mo></mover><mo>=</mo><mi>Z</mi><mo>*</mo><mfrac><mi>σ</mi><msqrt><mi>n</mi></msqrt></mfrac><mo>+</mo><mi>μ</mi><mo>=</mo><mn>0.842</mn><mo>*</mo><mn>13</mn><mi>/</mi><mn>5</mn><mo>+</mo><mn>173</mn><mo>=</mo><mn>175.188</mn></mrow><annotation encoding="application/x-tex">\bar{x} = Z * \frac{\sigma}{\sqrt{n}} + \mu = 0.842 * 13 / 5 + 173 = 175.188</annotation></semantics></math>.</p>
+<br/>
+</li>
+</ol>
+
+</body>
+</html>

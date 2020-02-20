@@ -24,7 +24,7 @@ n_versions <- 1
 
 ## compile the document
 exam <- exams2pdf(
-    file     = assignment,
+    file     = problems,
     n        = n_versions,
     dir      = here::here("problem-sets"), ## output directory
     name     = name_exam,

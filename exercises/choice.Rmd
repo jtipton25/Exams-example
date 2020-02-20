@@ -19,7 +19,7 @@ Question
 ========
 Which of these are places in Arkansas?
 ```{r, echo = FALSE, results = "asis"}
-answerlist(questions)
+answerlist(questions, markup = "markdown")
 ```
 
 Solution
